@@ -2,3 +2,13 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<div class="panel-body">
+  <ul>
+    <li><%= @user.name %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
+    <li><%= @user.email %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
+    <li><%= @user.personal_info %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
+    <li><%= @user.address %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
+  </ul>
+  <br>
+</div>
