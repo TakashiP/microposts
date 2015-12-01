@@ -3,12 +3,10 @@
   <%= @user.name %>
 </h1>
 
-<div class="panel-body">
-  <ul>
-    <li><%= @user.name %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
-    <li><%= @user.email %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
-    <li><%= @user.personal_info %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
-    <li><%= @user.address %>(<%= link_to "edit" , edit_user_path(@user) %>)</li>
-  </ul>
+<div class="panel-body bar">
+    <h2 class = "bar"><span class="label label-info">名前</span>　　　　　 　<%= @user.name %></h2>
+    <h2 class = "bar"><span class="label label-info">Email</span>　　　　　　<%= @user.email %></h2>
+    <h2 class = "bar"><span class="label label-info">プロフィール</span>　　 　<%= @user.personal_info %></h2>
+    <h2 class = "bar"><span class="label label-info">住所</span>　　　　　 　<%= @user.address %></h2>
   <br>
 </div>

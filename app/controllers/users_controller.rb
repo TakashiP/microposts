@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-before_action :set_user, only: [:edit, :update]
+before_action :set_user, only: [:show, :edit, :update]
   def new
     @user = User.new
   end
 
   def show
-   @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to root_url
+    else
+    @user = User.find(params[:id])
+    end
   end
   
   def create
@@ -17,14 +21,15 @@ before_action :set_user, only: [:edit, :update]
       render 'new'
     end
   end
-
+  
   def edit
-    if logged_in?
+    if @user != current_user
+      redirect_to root_url
     end
   end
   
   def update
-    if logged_in?
+    if @user = current_user
       if @user.update(user_params)
         # 保存に成功した場合はプロフィールページへリダイレクト
         redirect_to @user , notice: 'プロフィールを編集しました'
