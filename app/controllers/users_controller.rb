@@ -3,14 +3,10 @@ before_action :set_user, only: [:edit, :update]
   def new
     @user = User.new
   end
-
+  
   def show
-<<<<<<< HEAD
    @user = User.find(params[:id])
    @microposts = @user.microposts.order(created_at: :desc)
-=======
-    @user = User.find(params[:id])
->>>>>>> user-profile
   end
   
   def create
