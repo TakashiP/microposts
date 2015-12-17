@@ -5,9 +5,6 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <span class="timestamp">
-      Last log in <%= time_ago_in_words(@user.created_at) %> ago.
-      </span>
     </section>
   </aside>
   <div class="panel-body bar col-md-8">
@@ -17,22 +14,19 @@
     <h2 class = "bar"><span class="label label-info">住所</span>　　　　　 　<%= @user.address %></h2>
   </div>
   <br>
-  <div class="col-md-4">
-   <div class="col-md-4">
-     <%= link_to "Followings", followings_user_path(@user), class: "btn btn-lg btn-primary" %>
-   </div>
-   <div class="col-md-4">
-     <%= link_to "Followers", followers_user_path(@user), class: "btn btn-lg btn-primary" %>
-   </div>  
-  </div>
-  <br>
   <div class="col-md-12">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+    <% if @user.following_users.any? %>
+      <h3>followings (<%= @user.following_users.count %>)</h3>
+      <% @followings.each do |u| %>
+      <div class="panel-body bar col-md-8">
+      <%= gravatar_for u %>
+      <h2 class = "bar"><span class="label label-info">名前</span>　　　　　 　<%= u.name %></h2>
+      <h2 class = "bar"><span class="label label-info">プロフィール</span>　　 　<%= u.personal_info %></h2>
+      <div class="col-md-2">
+            <%= render 'follow_form' if logged_in? %>
+      </div>
+      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
