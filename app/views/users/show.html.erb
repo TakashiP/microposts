@@ -5,6 +5,9 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <span class="timestamp">
+      Last log in <%= time_ago_in_words(@user.created_at) %> ago.
+      </span>
     </section>
   </aside>
   <div class="panel-body bar col-md-8">
